@@ -7,7 +7,7 @@ require HTML::Mason;
 require HTML::Mason::Interp;
 require HTML::Mason::Request;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 sub build {
   shift;    # ignore
@@ -27,8 +27,7 @@ sub build {
 
     $interp->set_global('ctx' => $ctx);
 
-    HTML::Mason::Request->new(
-      interp     => $interp,
+    $interp->make_request(
       args       => [%$stash],
       out_method => $output,
       comp       => $template,
