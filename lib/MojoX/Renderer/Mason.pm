@@ -7,7 +7,7 @@ require HTML::Mason;
 require HTML::Mason::Interp;
 require HTML::Mason::Request;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 sub build {
   shift;    # ignore
@@ -19,13 +19,13 @@ sub build {
   my $interp = HTML::Mason::Interp->new(%args);
 
   return sub {
-    my ($mojo, $ctx, $output) = @_;
-    my $stash    = $ctx->stash;
-    my $template = $stash->{template};
+    my ($r, $c, $output, $options) = @_;
+    my $stash    = $c->stash;
+    my $template = $options->{template};
 
     $template =~ s,^/*,/,;    # must start with /
 
-    $interp->set_global('ctx' => $ctx);
+    $interp->set_global('ctx' => $c);
 
     $interp->make_request(
       args       => [%$stash],

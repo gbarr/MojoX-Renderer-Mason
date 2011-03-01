@@ -1,2 +1,7 @@
+0.12 Tue Mar  1 15:29:32 CET 2011
+ * Make it work with Mojolicious 1.11 (thanks to Alexandre SIMON [AT] ciril fr)
+   Refer to Mojolicious::Renderer, args passed renderer are :
+     $self->_render_template($c, \$output, $options)
+
 0.11 Tue Dec  2 20:47:45 CST 2008
  * Call $interp->make_request to create request object
